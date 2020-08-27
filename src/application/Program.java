@@ -13,6 +13,7 @@ import db.DB;
 import db.DbException;
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
+import model.dao.impl.SellerDaoJDBC;
 import model.entities.Department;
 import model.entities.Seller;
 
@@ -30,6 +31,17 @@ public class Program {
 		for(Seller obj:list) {
 			System.out.println(obj);
 		}
+		
+		System.out.println("===TEST 3: Seller find all===");
+		list=sellerDao.findAll();
+		for(Seller obj:list) {
+			System.out.println(obj);
+		}
+		
+		System.out.println("===TEST 4: Insert Seller===");
+		Seller newSeller=new Seller(null, "Greg", "greg@gmail.com", new Date(), 4000.0, dep);
+		sellerDao.insert(newSeller);
+		System.out.println("Inserted: New id is: "+newSeller.getId());
 			
 		
 		/*Connection conn = null;
